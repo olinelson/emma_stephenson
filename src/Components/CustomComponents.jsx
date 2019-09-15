@@ -4,7 +4,7 @@ import React from 'react'
 export const Container = styled.div`
     display: grid;
     grid-gap: 1rem;
-    margin: 15px;
+    margin: 0 15px;
 `
 
 export const FeatureAlbumCard = styled.div`

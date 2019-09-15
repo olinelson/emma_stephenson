@@ -20,6 +20,7 @@ import Music from './Components/Music';
 import { Container } from './Components/CustomComponents'
 import Equrlity from './Components/Equrlity';
 import Advocacy from './Advocacy';
+import Footer from './Footer';
 
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
         <Equrlity />
         <Advocacy />
       </Container>
+      <Footer />
     </div>
   );
 }
