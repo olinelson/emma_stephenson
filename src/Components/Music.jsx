@@ -3,7 +3,7 @@ import { Grid, TidalLogo, AlbumCard, IconRow } from './CustomComponents'
 import { Card, Image, Button, Menu, Icon, Divider } from 'semantic-ui-react'
 export default function Music() {
 
-    const [selectedTab, setSelectedTab] = useState("ng")
+
 
 
 

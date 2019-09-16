@@ -1,5 +1,5 @@
 import React from 'react'
-import { Accordion } from 'semantic-ui-react'
+import { Accordion, Image, Item } from 'semantic-ui-react'
 
 export default function Equrlity() {
     const panels = [
@@ -21,25 +21,15 @@ export default function Equrlity() {
         },
     ]
 
-    // const ExpandingTwoPanel = styled.div`
-    //     display: grid;
-    //     grid-gap: 1rem;
-    // `
-
-
     return <>
-        <div >
-            <h1>Equrlity</h1>
-            <div style={{ display: "grid", gridGap: "1rem", gridTemplateColumns: "1fr auto", alignItems: "center" }}>
-                <img alt="I wrote you a song album cover" src="https://via.placeholder.com/200" />
-                <div>
-                    <p>Stream and purchase Emma’s music on eqURLity.com, a new content distribution platform founded by Emma and her father Gary Stephenson.</p>
-                    <Accordion panels={panels} />
-                </div>
-            </div>
 
-        </div>
-
-
+        <Item.Group>
+            <Item
+                header="Equrlity"
+                image='https://via.placeholder.com/200'
+                description='Stream and purchase Emma’s music on eqURLity.com, a new content distribution platform founded by Emma and her father Gary Stephenson.'
+                extra={<Accordion panels={panels} />}
+            />
+        </Item.Group>
     </>
 }

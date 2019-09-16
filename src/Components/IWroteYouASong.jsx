@@ -2,7 +2,7 @@ import React from 'react'
 import { Item, Divider, Menu, Accordion, Icon, Header } from 'semantic-ui-react'
 import { IconRow, StickyImage, TidalLogo, MobileStickyImage } from "./CustomComponents"
 
-export default function IWroteYouASong() {
+export default function IWroteYouASong(props) {
     const items = [
 
         {
@@ -46,10 +46,10 @@ export default function IWroteYouASong() {
             </>
         },
         {
-            childKey: 1,
+            childKey: 0,
             // image: 'https://via.placeholder.com/200',
             image: <StickyImage wrapped size="large" src='https://via.placeholder.com/400' />,
-            header: 'I wrote you a song 2',
+            header: <><MobileStickyImage size="medium" centered src='https://via.placeholder.com/400' /><Header as="h1" content="I Wrote you a song 2" /></>,
             description: 'Blurb',
             meta: <IconRow>
                 <Menu.Item href="#" icon={<Icon link name="spotify" size="large" />} size="large" />
@@ -83,9 +83,9 @@ export default function IWroteYouASong() {
             ]} />
                 <Divider hidden />
                 <Divider hidden />
-
             </>
         },
+
 
 
     ]

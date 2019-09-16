@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid } from './Components/CustomComponents'
+import { Grid } from './CustomComponents'
 
 export default function Advocacy() {
     return (
