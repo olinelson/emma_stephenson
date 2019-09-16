@@ -1,61 +1,67 @@
 import React from 'react';
+import 'semantic-ui-css/semantic.min.css'
 import './App.css';
-import {
-  Alignment,
-  Button,
-  Classes,
-  H5,
-  Navbar,
-  NavbarDivider,
-  NavbarGroup,
-  NavbarHeading,
-  Switch,
-  CollapsibleList,
-  MenuItem
-} from "@blueprintjs/core";
+
+import { Button, Menu, Header, Sidebar, Icon, Image, Item, Accordion, Divider } from 'semantic-ui-react'
+
+
 
 // components
 import News from './Components/News';
 import Music from './Components/Music';
-import { Container } from './Components/CustomComponents'
+import { Container, AlbumCard, IconRow, TidalLogo, StickyImage } from './Components/CustomComponents'
 import Equrlity from './Components/Equrlity';
 import Advocacy from './Advocacy';
 import Footer from './Footer';
+import IWroteYouASong from './Components/IWroteYouASong';
 
 function App() {
+
+
+
+
   return (
     <div className="App">
-      <Navbar>
-        <NavbarGroup align={Alignment.LEFT}>
-          {/* <NavbarHeading>Blueprint</NavbarHeading> */}
-          {/* <NavbarDivider /> */}
-          <Button className={Classes.MINIMAL} text="I Wrote You A Song" />
-          <Button className={Classes.MINIMAL} text="Music" />
-          <Button className={Classes.MINIMAL} text="Equrlity" />
-          <Button className={Classes.MINIMAL} text="Advocacy" />
 
-        </NavbarGroup>
-        <NavbarGroup align={Alignment.RIGHT}>
+
+      <Menu>
+        <Menu.Menu position="left">
           {/* <NavbarHeading>Blueprint</NavbarHeading> */}
           {/* <NavbarDivider /> */}
-          <Button className={Classes.MINIMAL} icon="facebook" text="Facebook" />
-          <Button className={Classes.MINIMAL} icon="facebook" text="Instagram" />
-          <Button className={Classes.MINIMAL} icon="facebook" text="Youtube" />
+          <Menu.Item content="I Wrote You A Song" />
+          <Menu.Item content="Hieronymus Trio Feat. Gian Slater" />
+          <Menu.Item content="Trash Can Dream" />
+          <Menu.Item content="Equrlity" />
+          <Menu.Item content="Advocacy" />
+
+        </Menu.Menu>
+        <Menu.Menu position="right">
+          {/* <NavbarHeading>Blueprint</NavbarHeading> */}
+          {/* <NavbarDivider /> */}
+          <Menu.Item icon="facebook" />
+          <Menu.Item icon="instagram" />
+          <Menu.Item icon="youtube" />
+          <Menu.Item icon="twitter" />
           {/* <Button className={Classes.MINIMAL} icon="facebook" text="Spotify" />
           <Button className={Classes.MINIMAL} icon="facebook" text="Equrlity" />
  */}
 
 
-        </NavbarGroup>
-      </Navbar>
+        </Menu.Menu>
+      </Menu>
 
 
 
       <Container className="ui container">
-        <h1 style={{ justifySelf: "center", fontSize: "4rem" }}>Emma Stephenson</h1>
+        <Header as="h1" style={{ fontSize: "4rem" }} textAlign="center">Emma Stephenson</Header>
 
         <News />
-        <Music />
+
+        <IWroteYouASong />
+
+
+
+
         <Equrlity />
         <Advocacy />
       </Container>
