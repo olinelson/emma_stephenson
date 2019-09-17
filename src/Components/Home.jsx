@@ -83,7 +83,7 @@ export default function Home(props) {
     }, [])
 
     return <>
-        <Menu pointing style={{ backgroundColor: "white" }} fixed="top" secondary>
+        <Menu pointing style={{ position: 'sticky', top: "0", background: "white", zIndex: 100 }} secondary>
             <Menu.Menu position="left">
                 <Menu.Item active={props.location.pathname === "/i_wrote_you_a_song"} onClick={() => window.scroll({ top: iWroteYouASongRef.current.offsetTop, behavior: 'smooth' })} content="I Wrote You A Song" />
                 <Menu.Item active={props.location.pathname === "/hieronymus"} onClick={() => window.scroll({ top: hieronymusRef.current.offsetTop, behavior: 'smooth' })} content="Hieronymus Trio Feat. Gian Slater" />
@@ -101,38 +101,39 @@ export default function Home(props) {
         </Menu>
 
 
-        <Container>
-
-            <TrackVisibility {...props} partialVisibility>
-                <News appState={appState} setAppState={setAppState} {...props} />
-            </TrackVisibility>
 
 
-            <div ref={iWroteYouASongRef} />
-            <TrackVisibility  {...props} partialVisibility>
-                <IWroteYouASong appState={appState} setAppState={setAppState} {...props} />
-            </TrackVisibility>
+        <TrackVisibility {...props} partialVisibility>
+            <News appState={appState} setAppState={setAppState} {...props} />
+        </TrackVisibility>
 
 
-            <div ref={hieronymusRef} />
-            <TrackVisibility partialVisibility {...props} >
-                <Hieronymus {...props} appState={appState} setAppState={setAppState} />
-            </TrackVisibility>
+        <div style={{ height: "3rem" }} ref={iWroteYouASongRef} />
 
-            <div ref={equrlityRef} />
-            <TrackVisibility partialVisibility {...props} >
-                <Equrlity {...props} appState={appState} setAppState={setAppState} />
-            </TrackVisibility>
+        <TrackVisibility  {...props} partialVisibility>
+            <IWroteYouASong appState={appState} setAppState={setAppState} {...props} />
+        </TrackVisibility>
 
 
-            <div ref={advocacyRef} />
-            <TrackVisibility partialVisibility {...props} >
-                <Advocacy {...props} appState={appState} setAppState={setAppState} />
-            </TrackVisibility>
+        <div style={{ height: "3rem" }} ref={hieronymusRef} />
+        <TrackVisibility partialVisibility {...props} >
+            <Hieronymus {...props} appState={appState} setAppState={setAppState} />
+        </TrackVisibility>
+
+        <div style={{ height: "3rem" }} ref={equrlityRef} />
+        <TrackVisibility partialVisibility {...props} >
+            <Equrlity {...props} appState={appState} setAppState={setAppState} />
+        </TrackVisibility>
+
+
+        <div style={{ height: "3rem" }} ref={advocacyRef} />
+        <TrackVisibility partialVisibility {...props} >
+            <Advocacy {...props} appState={appState} setAppState={setAppState} />
+        </TrackVisibility>
 
 
 
-        </Container>
+
         <Footer />
     </>
 }

@@ -82,10 +82,11 @@ export const Grid = styled.div`
 
 `
 
-export const Section = styled.div`
-    min-height: 90vh;
+export const Section = styled(Container)`
+    min-height: 100vh;
     display: grid;
     align-content: center;
+
     border: 1px solid pink;
 `
 export const SectionHeader = styled(Header)`

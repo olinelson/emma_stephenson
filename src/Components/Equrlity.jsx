@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Accordion, Image, Item } from 'semantic-ui-react'
+import { Section } from './CustomComponents'
 
 export default function Equrlity(props) {
 
@@ -32,7 +33,7 @@ export default function Equrlity(props) {
         },
     ]
 
-    return <>
+    return <Section>
 
         <Item.Group>
             <Item
@@ -42,5 +43,5 @@ export default function Equrlity(props) {
                 extra={<Accordion panels={panels} />}
             />
         </Item.Group>
-    </>
+    </Section>
 }
