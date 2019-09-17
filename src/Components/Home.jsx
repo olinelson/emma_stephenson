@@ -9,12 +9,14 @@ import Footer from './Footer';
 import IWroteYouASong from './IWroteYouASong';
 
 import { Button, Menu, Header, Sidebar, Icon, Items, Image, Item, Accordion, Divider } from 'semantic-ui-react'
+import Hieronymus from './Hieronymus';
 
 export default function Home(props) {
 
     const iWroteYouASongRef = useRef(null)
     const equrlityRef = useRef(null)
     const advocacyRef = useRef(null)
+    const hieronymusRef = useRef(null)
     // const trackOneRef = useRef(null)
     // const trackTwoRef = useRef(null)
 
@@ -67,6 +69,14 @@ export default function Home(props) {
             <Divider hidden />
             <div ref={iWroteYouASongRef} />
             <IWroteYouASong />
+
+
+            <Divider hidden />
+            <Divider hidden />
+            <div ref={hieronymusRef} />
+            <Hieronymus />
+
+
 
 
 

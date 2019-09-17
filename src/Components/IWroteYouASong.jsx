@@ -46,7 +46,7 @@ export default function IWroteYouASong(props) {
             </>
         },
         {
-            childKey: 0,
+            childKey: 1,
             // image: 'https://via.placeholder.com/200',
             image: <StickyImage wrapped size="large" src='https://via.placeholder.com/400' />,
             header: <><MobileStickyImage size="medium" centered src='https://via.placeholder.com/400' /><Header as="h1" content="I Wrote you a song 2" /></>,
