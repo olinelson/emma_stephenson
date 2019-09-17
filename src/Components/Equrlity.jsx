@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { Accordion, Image, Item } from 'semantic-ui-react'
-import { Section } from './CustomComponents'
+import { Accordion, Image, Item, Menu, Icon, Header } from 'semantic-ui-react'
+import { Section, SectionHeader, StickyImage, IconRow, TidalLogo, MobileStickyImage } from './CustomComponents'
 
 export default function Equrlity(props) {
 
@@ -11,37 +11,32 @@ export default function Equrlity(props) {
 
     }, [props.isVisable, props.history, props])
 
-
-
-
-    const panels = [
-        {
-            key: 'more',
-            title: 'More About Equrlity',
-            content: {
-                content: (
-                    <div>
-                        <p>
-                            eqURLity is an online content distribution service developed by Gary and Emma Stephenson. The father-daughter team recruited Gary’s expertise in software engineering with Emma’s knowledge and experience of the challenges of monetising creative content in the 21st century to develop a groundbreaking technology that allows creators to distribute and monetize their work entirely on their own terms. The system shakes up the normal incentive structures that tend to benefit middle men and instead gives creators the option to offer small financial incentives directly to consumers to ‘try-out’ their product before they purchase it (be it music, art, writing or other). Non-creators can also make money on eqURLity to by investing in quality content and getting it in front of new audiences. The system is integrated with and inspired by Bitcoin technology.
-                        </p>
-                        <p>
-                            Emma’s new album ‘I Wrote You a Song’ is available for streaming and purchase on equrlity.com. Emma’s streaming schedules allow listenerss to collect a small payment to try-before-they-buy. Should they choose not to continue streaming her music, they are free to spend the tokens consuming other content on the system, or withdraw them to a valid bitcoin address at anytime.
-                    </p>
-                    </div>
-                ),
+    const items = [{
+        childKey: 0,
+        // image: 'https://via.placeholder.com/200',
+        image: <StickyImage wrapped size="small" src='https://via.placeholder.com/400' />,
+        header: <><MobileStickyImage size="medium" centered src='https://via.placeholder.com/400' /></>,
+        description: "Stream and purchase Emma’s music on eqURLity.com, a new content distribution platform founded by Emma and her father Gary Stephenson.",
+        extra: <><Accordion exclusive={false} panels={[
+            {
+                key: 'More',
+                title: 'More',
+                content: {
+                    content: (
+                        <div>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                        </div>
+                    ),
+                },
             },
-        },
-    ]
+        ]} />
+        </>
+    },]
+
 
     return <Section>
+        <SectionHeader content="Equrlity" />
+        <Item.Group items={items} />
 
-        <Item.Group>
-            <Item
-                header="Equrlity"
-                image='https://via.placeholder.com/200'
-                description='Stream and purchase Emma’s music on eqURLity.com, a new content distribution platform founded by Emma and her father Gary Stephenson.'
-                extra={<Accordion panels={panels} />}
-            />
-        </Item.Group>
-    </Section>
+    </Section >
 }

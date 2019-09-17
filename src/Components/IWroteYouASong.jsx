@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Item, Divider, Menu, Accordion, Icon, Header } from 'semantic-ui-react'
+import { Item, Divider, Menu, Accordion, Icon, Header, Container } from 'semantic-ui-react'
 import { IconRow, StickyImage, TidalLogo, MobileStickyImage, Section, SectionHeader } from "./CustomComponents"
 
 export default function IWroteYouASong(props) {
@@ -103,9 +103,12 @@ export default function IWroteYouASong(props) {
 
     return <Section>
         <SectionHeader content="I Wrote You A Song" />
-        <Item.Group relaxed="very" items={items} />
-        <Divider hidden />
-        <Divider hidden />
+        <Container text>
+            <p>Songs by Emma Grace Stephenson featuring six astonishing Australian vocalists, recorded at Engine Room Audio NYC. Produced by Darren Fewins.</p>
+        </Container>
+        <Item.Group items={items} />
+        {/* <Divider hidden /> */}
+        {/* <Divider hidden /> */}
     </Section>
 
 

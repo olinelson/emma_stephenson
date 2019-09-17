@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import { Divider, Item, Header, Accordion, Menu, Icon } from "semantic-ui-react"
 import { StickyImage, TidalLogo, IconRow, MobileStickyImage, Section, SectionHeader } from './CustomComponents'
 
-export default function Hieronymus(props) {
+export default function TrashCanDream(props) {
 
     useEffect(() => {
-        if (props.isVisible === true && props.appState.routesInView["/hieronymus"] !== true) props.setAppState({ ...props.appState, routesInView: { ...props.appState.routesInView, "/hieronymus": true } })
-        if (props.isVisible === false && props.appState.routesInView["/hieronymus"] !== false) props.setAppState({ ...props.appState, routesInView: { ...props.appState.routesInView, "/hieronymus": false } })
+        if (props.isVisible === true && props.appState.routesInView["/trash_can_dream"] !== true) props.setAppState({ ...props.appState, routesInView: { ...props.appState.routesInView, "/trash_can_dream": true } })
+        if (props.isVisible === false && props.appState.routesInView["/trash_can_dream"] !== false) props.setAppState({ ...props.appState, routesInView: { ...props.appState.routesInView, "/trash_can_dream": false } })
 
     }, [props.isVisable, props.history, props])
 
@@ -21,7 +21,7 @@ export default function Hieronymus(props) {
             // image: 'https://via.placeholder.com/200',
             image: <StickyImage wrapped size="large" src='https://via.placeholder.com/400' />,
             header: <><MobileStickyImage size="medium" centered src='https://via.placeholder.com/400' /><Header as="h1" content="Where the rest of the world begins" /></>,
-            description: 'Songs by Emma Grace Stephenson featuring vocalist Gian Slater and Hieronymus Trio ',
+            description: 'Listen to homegrown originals duo featuring Emma Stephenson (keys, vocals, songwriting) and Oli Nelson (drums)',
             meta: <IconRow>
                 <Menu.Item href="#" icon={<Icon link name="spotify" size="large" />} size="large" />
                 <Menu.Item href="#" icon={<Icon link name="itunes" size="large" />} size="large" />
@@ -61,7 +61,7 @@ export default function Hieronymus(props) {
 
 
     return <Section>
-        <SectionHeader content="Hieronymus Trio Feat. Gian Slater" />
+        <SectionHeader content="Trash Can Dream" />
         <Item.Group relaxed="very" items={items} />
     </Section>
 
