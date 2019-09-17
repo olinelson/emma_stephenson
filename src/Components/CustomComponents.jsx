@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import React from 'react'
 
-import { Image } from 'semantic-ui-react'
+import { Image, Header } from 'semantic-ui-react'
 
 export const Container = styled.div`
     display: grid;
@@ -44,7 +44,7 @@ export const StickyImage = styled(Image)`
 img{
     position: sticky;
     position: -webkit-sticky;
-    top: 3rem;
+    top: 4rem;
 
 
 
@@ -59,7 +59,7 @@ img{
 export const MobileStickyImage = styled.img`
     position: sticky;
     position: -webkit-sticky;
-    top: 3rem;
+    top: 4rem;
     width: 100%;
     height:auto;
     display: none;
@@ -80,6 +80,17 @@ export const Grid = styled.div`
     grid-template-columns: repeat( auto-fit, minmax(${props => props.min}, ${props => props.max}) );
     grid-gap: ${props => props.gridGap || '1rem'} ;
 
+`
+
+export const Section = styled.div`
+    min-height: 90vh;
+    display: grid;
+    align-content: center;
+    border: 1px solid pink;
+`
+export const SectionHeader = styled(Header)`
+   font-size: 3rem !important;
+   text-align: center;
 `
 
 

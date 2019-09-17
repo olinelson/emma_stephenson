@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Item, Divider, Menu, Accordion, Icon, Header } from 'semantic-ui-react'
-import { IconRow, StickyImage, TidalLogo, MobileStickyImage } from "./CustomComponents"
+import { IconRow, StickyImage, TidalLogo, MobileStickyImage, Section, SectionHeader } from "./CustomComponents"
 
 export default function IWroteYouASong(props) {
+
+
+
+    useEffect(() => {
+        if (props.isVisible === true && props.appState.routesInView["/i_wrote_you_a_song"] !== true) props.setAppState({ ...props.appState, routesInView: { ...props.appState.routesInView, "/i_wrote_you_a_song": true } })
+        if (props.isVisible === false && props.appState.routesInView["/i_wrote_you_a_song"] !== false) props.setAppState({ ...props.appState, routesInView: { ...props.appState.routesInView, "/i_wrote_you_a_song": false } })
+    }, [props.isVisable, props.history, props])
+
+
+
+
+
     const items = [
 
         {
@@ -81,8 +93,6 @@ export default function IWroteYouASong(props) {
                     },
                 },
             ]} />
-                <Divider hidden />
-                <Divider hidden />
             </>
         },
 
@@ -91,17 +101,12 @@ export default function IWroteYouASong(props) {
     ]
 
 
-    return <div>
-        <Divider hidden />
-        <Divider hidden />
-        <div style={{ position: "sticky", top: "0", zIndex: 1, background: "white" }}>
-            <Header textAlign="center" as="h1" content="I Wrote You A Song" />
-        </div>
-        <Divider />
+    return <Section>
+        <SectionHeader content="I Wrote You A Song" />
         <Item.Group relaxed="very" items={items} />
         <Divider hidden />
         <Divider hidden />
-    </div>
+    </Section>
 
 
 

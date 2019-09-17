@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 
 import News from './News';
 import Music from './Music';
@@ -11,22 +11,49 @@ import IWroteYouASong from './IWroteYouASong';
 import { Button, Menu, Header, Sidebar, Icon, Items, Image, Item, Accordion, Divider } from 'semantic-ui-react'
 import Hieronymus from './Hieronymus';
 
+
+
+import TrackVisibility from 'react-on-screen';
+
 export default function Home(props) {
+
 
     const iWroteYouASongRef = useRef(null)
     const equrlityRef = useRef(null)
     const advocacyRef = useRef(null)
     const hieronymusRef = useRef(null)
-    // const trackOneRef = useRef(null)
-    // const trackTwoRef = useRef(null)
+
+    const [appState, setAppState] = useState({
+        routesInView: {
+            '/': false,
+            '/i_wrote_you_a_song': false,
+            '/equrlity': false,
+            '/hieronymus': false,
+            '/advocacy': false,
+        }
+    })
 
 
 
+    const routePicker = () => {
+        let visibleRoutes = []
+
+        for (let r in appState.routesInView) {
+            if (appState.routesInView[r] === true) visibleRoutes.push(r)
+
+        }
+        return visibleRoutes
+    }
+
+    let visibleRoutes = routePicker()
+
+    if (visibleRoutes.length === 1) {
+        if (props.location.pathname !== visibleRoutes[0]) props.history.replace(visibleRoutes[0])
+    }
 
 
     useEffect(() => {
-        console.log(props.location.pathname)
-        switch (props.location.pathname) {
+        switch (window.location.pathname) {
             case '/i_wrote_you_a_song':
                 window.scroll({ top: iWroteYouASongRef.current.offsetTop, behavior: 'smooth' })
                 break;
@@ -44,155 +71,65 @@ export default function Home(props) {
             case '/equrlity':
                 window.scroll({ top: equrlityRef.current.offsetTop, behavior: 'smooth' })
                 break;
+            case '/hieronymus':
+                window.scroll({ top: hieronymusRef.current.offsetTop, behavior: 'smooth' })
+                break;
 
             case '/advocacy':
                 window.scroll({ top: advocacyRef.current.offsetTop, behavior: 'smooth' })
                 break;
             default:
-
-            // console.log(window.location.pathname)
-            // console.log('root');
         }
-    }, [props])
+    }, [])
 
     return <>
+        <Menu pointing style={{ backgroundColor: "white" }} fixed="top" secondary>
+            <Menu.Menu position="left">
+                <Menu.Item active={props.location.pathname === "/i_wrote_you_a_song"} onClick={() => window.scroll({ top: iWroteYouASongRef.current.offsetTop, behavior: 'smooth' })} content="I Wrote You A Song" />
+                <Menu.Item active={props.location.pathname === "/hieronymus"} onClick={() => window.scroll({ top: hieronymusRef.current.offsetTop, behavior: 'smooth' })} content="Hieronymus Trio Feat. Gian Slater" />
+                <Menu.Item active={props.location.pathname === "/trash_can_dream"} content="Trash Can Dream" />
+                <Menu.Item active={props.location.pathname === "/equrlity"} onClick={() => window.scroll({ top: equrlityRef.current.offsetTop, behavior: 'smooth' })} content="Equrlity" />
+                <Menu.Item active={props.location.pathname === "/advocacy"} onClick={() => window.scroll({ top: advocacyRef.current.offsetTop, behavior: 'smooth' })} content="Advocacy" />
+
+            </Menu.Menu>
+            <Menu.Menu position="right">
+                <Menu.Item icon="facebook" />
+                <Menu.Item icon="instagram" />
+                <Menu.Item icon="youtube" />
+                <Menu.Item icon="twitter" />
+            </Menu.Menu>
+        </Menu>
+
+
         <Container>
 
-            <Header as="h1" style={{ fontSize: "4rem" }} textAlign="center">Emma Stephenson</Header>
-
-            <News />
-
-
+            <TrackVisibility {...props} partialVisibility>
+                <News appState={appState} setAppState={setAppState} {...props} />
+            </TrackVisibility>
 
 
-            <Divider hidden />
-            <Divider hidden />
             <div ref={iWroteYouASongRef} />
-            <IWroteYouASong />
+            <TrackVisibility  {...props} partialVisibility>
+                <IWroteYouASong appState={appState} setAppState={setAppState} {...props} />
+            </TrackVisibility>
 
 
-            <Divider hidden />
-            <Divider hidden />
             <div ref={hieronymusRef} />
-            <Hieronymus />
-
-
-
-
-
-
-            {/* verbose */}
-            {/* <Item.Group relaxed="very">
-                <div ref={trackOneRef}></div>
-
-                < Item >
-                    <StickyImage wrapped size="large" src='https://via.placeholder.com/400' />
-
-                    <Item.Content>
-                        <Item.Header><><MobileStickyImage size="medium" centered src='https://via.placeholder.com/400' /><Header as="h1" content="I Wrote you a song 1" /></></Item.Header>
-                        <Item.Meta><IconRow>
-                            <Menu.Item href="#" icon={<Icon link name="spotify" size="large" />} size="large" />
-                            <Menu.Item href="#" icon={<Icon link name="itunes" size="large" />} size="large" />
-                            <Menu.Item href="#" content="Equrlity" />
-                            <Menu.Item href="#" icon={<TidalLogo />} size="large" />
-                        </IconRow></Item.Meta>
-                        <Item.Description>
-                            <Image src='/images/wireframe/short-paragraph.png' />
-                        </Item.Description>
-                        <Item.Extra><><Accordion exclusive={false} panels={[
-                            {
-                                key: 'About',
-                                title: 'About',
-                                content: {
-                                    content: (
-                                        <div>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-                                        </div>
-                                    ),
-                                },
-                            },
-                            {
-                                key: 'Lyrics',
-                                title: 'Lyrics',
-                                content: {
-                                    content: (
-                                        <div>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-                                        </div>
-                                    ),
-                                },
-                            },
-                        ]} />
-                            <Divider hidden />
-                            <Divider hidden />
-                        </></Item.Extra>
-                    </Item.Content>
-                </Item >
-                <div ref={trackTwoRef}></div>
-
-                < Item >
-                    <StickyImage wrapped size="large" src='https://via.placeholder.com/400' />
-
-                    <Item.Content>
-                        <Item.Header><><MobileStickyImage size="medium" centered src='https://via.placeholder.com/400' /><Header as="h1" content="I Wrote you a song 2" /></></Item.Header>
-                        <Item.Meta><IconRow>
-                            <Menu.Item href="#" icon={<Icon link name="spotify" size="large" />} size="large" />
-                            <Menu.Item href="#" icon={<Icon link name="itunes" size="large" />} size="large" />
-                            <Menu.Item href="#" content="Equrlity" />
-                            <Menu.Item href="#" icon={<TidalLogo />} size="large" />
-                        </IconRow></Item.Meta>
-                        <Item.Description>
-                            <Image src='/images/wireframe/short-paragraph.png' />
-                        </Item.Description>
-                        <Item.Extra><><Accordion exclusive={false} panels={[
-                            {
-                                key: 'About',
-                                title: 'About',
-                                content: {
-                                    content: (
-                                        <div>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-                                        </div>
-                                    ),
-                                },
-                            },
-                            {
-                                key: 'Lyrics',
-                                title: 'Lyrics',
-                                content: {
-                                    content: (
-                                        <div>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-                                        </div>
-                                    ),
-                                },
-                            },
-                        ]} />
-                            <Divider hidden />
-                            <Divider hidden />
-                        </></Item.Extra>
-                    </Item.Content>
-                </Item >
-
-            </Item.Group> */}
-            {/* end of verbose */}
-
-
-
-            <Divider hidden />
-            <Divider hidden />
-
-            {/* asd;lfjkha;sdkfjasf */}
-
-
-
-
+            <TrackVisibility partialVisibility {...props} >
+                <Hieronymus {...props} appState={appState} setAppState={setAppState} />
+            </TrackVisibility>
 
             <div ref={equrlityRef} />
-            <Equrlity />
+            <TrackVisibility partialVisibility {...props} >
+                <Equrlity {...props} appState={appState} setAppState={setAppState} />
+            </TrackVisibility>
+
 
             <div ref={advocacyRef} />
-            <Advocacy />
+            <TrackVisibility partialVisibility {...props} >
+                <Advocacy {...props} appState={appState} setAppState={setAppState} />
+            </TrackVisibility>
+
 
 
         </Container>

@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Accordion, Image, Item } from 'semantic-ui-react'
 
-export default function Equrlity() {
+export default function Equrlity(props) {
+
+    useEffect(() => {
+        if (props.isVisible === true && props.appState.routesInView["/equrlity"] !== true) props.setAppState({ ...props.appState, routesInView: { ...props.appState.routesInView, "/equrlity": true } })
+        if (props.isVisible === false && props.appState.routesInView["/equrlity"] !== false) props.setAppState({ ...props.appState, routesInView: { ...props.appState.routesInView, "/equrlity": false } })
+
+
+    }, [props.isVisable, props.history, props])
+
+
+
+
     const panels = [
         {
             key: 'more',

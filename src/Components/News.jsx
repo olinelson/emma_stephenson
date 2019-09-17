@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
-import { FeatureAlbumCard, FeatureAlbumCardText, SpotifyLogo, AppleMusicLogo, TidalLogo } from './CustomComponents'
-import { Button, Modal, Menu, Container, Divider } from "semantic-ui-react"
-export default function News() {
+import React, { useState, useEffect } from 'react'
+import { FeatureAlbumCard, FeatureAlbumCardText, SpotifyLogo, AppleMusicLogo, TidalLogo, Section } from './CustomComponents'
+import { Button, Modal, Menu, Container, Divider, Header } from "semantic-ui-react"
+export default function News(props) {
+
+    useEffect(() => {
+        if (props.isVisible === true && props.appState.routesInView["/"] !== true) props.setAppState({ ...props.appState, routesInView: { ...props.appState.routesInView, "/": true } })
+        if (props.isVisible === false && props.appState.routesInView["/"] !== false) props.setAppState({ ...props.appState, routesInView: { ...props.appState.routesInView, "/": false } })
+
+    }, [props.isVisable, props.history, props])
 
 
 
-    return <>
-        <Divider hidden />
-        <Divider hidden />
+    return <Section>
         <FeatureAlbumCard>
+            <Header as="h1" style={{ fontSize: "4rem" }} textAlign="center">Emma Stephenson</Header>
+            <Divider hidden />
             <img alt="I wrote you a song album cover" src="https://via.placeholder.com/350" />
             <FeatureAlbumCardText>
                 {/* <h1 style={{ margin: 0, marginTop: "-.5rem" }}>I Wrote You A Song</h1> */}
@@ -57,8 +63,6 @@ export default function News() {
             // actions={['Snooze', { key: 'done', content: 'Done', positive: true }]}
             />
         </FeatureAlbumCard >
-        <Divider hidden />
-        <Divider hidden />
-    </>
+    </Section>
 
 }
