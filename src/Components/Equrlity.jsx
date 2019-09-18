@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { Accordion, Image, Item, Menu, Icon, Header } from 'semantic-ui-react'
-import { Section, SectionHeader, StickyImage, IconRow, TidalLogo, MobileStickyImage } from './CustomComponents'
+import { Accordion, Item, } from 'semantic-ui-react'
+import { Section, SectionHeader, StickyImage, MobileStickyImage } from './CustomComponents'
 
 export default function Equrlity(props) {
 

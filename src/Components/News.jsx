@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { FeatureAlbumCard, FeatureAlbumCardText, SpotifyLogo, AppleMusicLogo, TidalLogo, Section } from './CustomComponents'
-import { Button, Modal, Menu, Container, Divider, Header } from "semantic-ui-react"
+import React, { useEffect } from 'react'
+import { FeatureAlbumCard, FeatureAlbumCardText, Section } from './CustomComponents'
+import { Button, Modal, Container, Divider, Header } from "semantic-ui-react"
 export default function News(props) {
 
     useEffect(() => {

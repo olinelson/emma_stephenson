@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { Item, Divider, Menu, Embed, Accordion, Icon, Header, Container } from 'semantic-ui-react'
-import { IconRow, StickyImage, TidalLogo, MobileStickyImage, Section, SectionHeader } from "./CustomComponents"
+import { Item, Divider, Accordion, Header } from 'semantic-ui-react'
+import { StickyImage, MobileStickyImage, Section, SectionHeader } from "./CustomComponents"
 
 export default function Advocacy(props) {
 

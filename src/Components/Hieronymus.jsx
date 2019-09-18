@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Divider, Item, Header, Accordion, Menu, Icon } from "semantic-ui-react"
+import { Item, Header, Accordion, Menu, Icon } from "semantic-ui-react"
 import { StickyImage, TidalLogo, IconRow, MobileStickyImage, Section, SectionHeader } from './CustomComponents'
 
 export default function Hieronymus(props) {

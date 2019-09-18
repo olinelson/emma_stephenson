@@ -1,24 +1,15 @@
 import React, { useRef, useEffect, useState } from 'react'
 
 import News from './News';
-import Music from './Music';
-import { Container, AlbumCard, IconRow, TidalLogo, StickyImage, MobileStickyImage, StyledTrackVisibility, NonMobileMenuBar, RefDivider, FooterContainer, FooterMenu, MobileHamburgerIcon } from './CustomComponents'
+
+import { Container, StyledTrackVisibility, NonMobileMenuBar, RefDivider, FooterContainer, FooterMenu, MobileHamburgerIcon } from './CustomComponents'
 import Equrlity from './Equrlity';
 import Advocacy from './Advocacy';
-import Footer from './Footer';
 import IWroteYouASong from './IWroteYouASong';
 
-import { Button, Menu, Header, Segment, Sidebar, Icon, Items, Image, Item, Accordion, Divider } from 'semantic-ui-react'
+import { Menu, Header, Sidebar, Divider } from 'semantic-ui-react'
 import Hieronymus from './Hieronymus';
 import TrashCanDream from './TrashCanDream';
-
-import styled from 'styled-components'
-
-
-
-
-
-// import StyledTrackVisibility from 'react-on-screen';
 
 export default function Home(props) {
 
@@ -92,24 +83,6 @@ export default function Home(props) {
             default:
         }
     }, [])
-
-    const SideWaysMenu = styled(Menu.Menu)`
-        // border: 1px solid red;
-        overflow-y: hidden;
-        overflow-x: hidden;
-        overflow: -moz-scrollbars-none !important;
-
-        ::-webkit-scrollbar {
-        height: 0px;
-        width: 4px;
-        background-color: white;
-        }        
-
-        ::-webkit-scrollbar-thumb {
-        background-color: white;
-
-    }
-    `
 
     const menuItems = () => {
         return <>
