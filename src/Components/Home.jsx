@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react'
 
 import News from './News';
 import Music from './Music';
-import { Container, AlbumCard, IconRow, TidalLogo, StickyImage, MobileStickyImage, StyledTrackVisibility, RefDivider, FooterContainer, FooterMenu } from './CustomComponents'
+import { Container, AlbumCard, IconRow, TidalLogo, StickyImage, MobileStickyImage, StyledTrackVisibility, NonMobileMenuBar, RefDivider, FooterContainer, FooterMenu, MobileHamburgerIcon } from './CustomComponents'
 import Equrlity from './Equrlity';
 import Advocacy from './Advocacy';
 import Footer from './Footer';
@@ -109,125 +109,173 @@ export default function Home(props) {
         background-color: white;
 
     }
-
-
     `
 
+    const menuItems = () => {
+        return <>
+            <Menu.Item active={props.location.pathname === "/"} onClick={() => window.scroll({ top: 0, behavior: 'smooth' })} content="Home" />
+            <Menu.Item active={props.location.pathname === "/i_wrote_you_a_song"} onClick={() => window.scroll({ top: iWroteYouASongRef.current.offsetTop, behavior: 'smooth' })} content="I Wrote You A Song" />
+            <Menu.Item active={props.location.pathname === "/hieronymus"} onClick={() => window.scroll({ top: hieronymusRef.current.offsetTop, behavior: 'smooth' })} content="Hieronymus Trio Feat. Gian Slater" />
+            <Menu.Item active={props.location.pathname === "/trash_can_dream"} onClick={() => window.scroll({ top: trashCanRef.current.offsetTop, behavior: 'smooth' })} content="Trash Can Dream" />
+            <Menu.Item active={props.location.pathname === "/equrlity"} onClick={() => window.scroll({ top: equrlityRef.current.offsetTop, behavior: 'smooth' })} content="Equrlity" />
+            <Menu.Item active={props.location.pathname === "/advocacy"} onClick={() => window.scroll({ top: advocacyRef.current.offsetTop, behavior: 'smooth' })} content="Advocacy" />
+        </>
+    }
+
+    const socialLinks = () => {
+        return <>
+            <Menu.Item icon="facebook" />
+            <Menu.Item icon="instagram" />
+            <Menu.Item icon="youtube" />
+            <Menu.Item icon="twitter" />
+        </>
+    }
+
     return <>
-
-
-        <Menu pointing style={{ position: 'sticky', top: "0", background: "white", zIndex: 100 }} secondary>
-            <SideWaysMenu position="left">
-                <Menu.Item active={props.location.pathname === "/i_wrote_you_a_song"} onClick={() => window.scroll({ top: iWroteYouASongRef.current.offsetTop, behavior: 'smooth' })} content="I Wrote You A Song" />
-                <Menu.Item active={props.location.pathname === "/hieronymus"} onClick={() => window.scroll({ top: hieronymusRef.current.offsetTop, behavior: 'smooth' })} content="Hieronymus Trio Feat. Gian Slater" />
-                <Menu.Item active={props.location.pathname === "/trash_can_dream"} onClick={() => window.scroll({ top: trashCanRef.current.offsetTop, behavior: 'smooth' })} content="Trash Can Dream" />
-                <Menu.Item active={props.location.pathname === "/equrlity"} onClick={() => window.scroll({ top: equrlityRef.current.offsetTop, behavior: 'smooth' })} content="Equrlity" />
-                <Menu.Item active={props.location.pathname === "/advocacy"} onClick={() => window.scroll({ top: advocacyRef.current.offsetTop, behavior: 'smooth' })} content="Advocacy" />
-
-            </SideWaysMenu>
+        <NonMobileMenuBar pointing secondary >
+            {menuItems()}
             <Menu.Menu position="right">
-                <Menu.Item icon="facebook" />
-                <Menu.Item icon="instagram" />
-                <Menu.Item icon="youtube" />
-                <Menu.Item icon="twitter" />
+                {socialLinks()}
             </Menu.Menu>
-        </Menu>
+        </NonMobileMenuBar>
+
+        <MobileHamburgerIcon size="big" onClick={() => setSideBarShown(true)} name="bars" />
+
+        <Sidebar
+            as={Menu}
+            animation={"push"}
+            direction={"right"}
+            icon='labeled'
+            vertical
+            visible={sideBarShown}
+            width='thin'
+            onHide={() => setSideBarShown(false)}
+        >
+            <Menu.Item icon="delete" onClick={() => setSideBarShown(false)} />
+
+            {menuItems()}
+
+            {socialLinks()}
 
 
-
-        <StyledTrackVisibility {...props} partialVisibility>
-            <News appState={appState} setAppState={setAppState} {...props} />
-        </StyledTrackVisibility>
-
-
-        <RefDivider ref={iWroteYouASongRef} />
-        <StyledTrackVisibility  {...props} partialVisibility>
-            <IWroteYouASong appState={appState} setAppState={setAppState} {...props} />
-        </StyledTrackVisibility>
-
-
-        <RefDivider ref={hieronymusRef} />
-        <StyledTrackVisibility partialVisibility {...props} >
-            <Hieronymus {...props} appState={appState} setAppState={setAppState} />
-        </StyledTrackVisibility>
-
-        <RefDivider ref={trashCanRef} />
-        <StyledTrackVisibility partialVisibility {...props} >
-            <TrashCanDream {...props} appState={appState} setAppState={setAppState} />
-        </StyledTrackVisibility>
-
-        <RefDivider ref={equrlityRef} />
-        <StyledTrackVisibility partialVisibility {...props} >
-            <Equrlity {...props} appState={appState} setAppState={setAppState} />
-        </StyledTrackVisibility>
-
-
-        <RefDivider ref={advocacyRef} />
-        <StyledTrackVisibility partialVisibility {...props} >
-            <Advocacy {...props} appState={appState} setAppState={setAppState} />
-        </StyledTrackVisibility>
-
-
-
-
-        {/* <Footer /> */}
-
-        <div>
-            <Divider hidden />
-            <Divider hidden />
-            <div style={{ background: "rgb(230, 230, 230)" }}>
-
-                <Container text>
-
-                    <FooterContainer >
-                        <Divider hidden />
-                        <FooterMenu compact secondary>
-                            < Menu.Item
-                                name='wrote'
-                                onClick={() => window.scroll({ top: iWroteYouASongRef.current.offsetTop, behavior: 'smooth' })}
-                                content='I Wrote You A Song'
-                            />
-                            < Menu.Item
-                                name='hieronymus'
-                                onClick={() => window.scroll({ top: hieronymusRef.current.offsetTop, behavior: 'smooth' })}
-                                content='Hieronymus Trio'
-                            />
-                            < Menu.Item
-                                name='trashCanDream'
-                                onClick={() => window.scroll({ top: trashCanRef.current.offsetTop, behavior: 'smooth' })}
-                                content='Trash Can Dream'
-                            />
+        </Sidebar>
 
 
 
 
 
-                        </FooterMenu>
-                        <FooterMenu compact secondary>
-                            < Menu.Item
-                                name='equrlity'
-                                onClick={() => window.scroll({ top: equrlityRef.current.offsetTop, behavior: 'smooth' })}
-                                content='Equrlity'
-                            />
-                            < Menu.Item
-                                name='advocacy'
-                                onClick={() => window.scroll({ top: advocacyRef.current.offsetTop, behavior: 'smooth' })}
-                                content='Advocacy'
-                            />
+
+
+
+        <Container >
+
+
+            <StyledTrackVisibility {...props} partialVisibility>
+                <News appState={appState} setAppState={setAppState} {...props} />
+            </StyledTrackVisibility>
+
+
+            <RefDivider ref={iWroteYouASongRef} />
+            <StyledTrackVisibility  {...props} partialVisibility>
+                <IWroteYouASong appState={appState} setAppState={setAppState} {...props} />
+            </StyledTrackVisibility>
+
+
+            <RefDivider ref={hieronymusRef} />
+            <StyledTrackVisibility partialVisibility {...props} >
+                <Hieronymus {...props} appState={appState} setAppState={setAppState} />
+            </StyledTrackVisibility>
+
+            <RefDivider ref={trashCanRef} />
+            <StyledTrackVisibility partialVisibility {...props} >
+                <TrashCanDream {...props} appState={appState} setAppState={setAppState} />
+            </StyledTrackVisibility>
+
+            <RefDivider ref={equrlityRef} />
+            <StyledTrackVisibility partialVisibility {...props} >
+                <Equrlity {...props} appState={appState} setAppState={setAppState} />
+            </StyledTrackVisibility>
+
+
+            <RefDivider ref={advocacyRef} />
+            <StyledTrackVisibility partialVisibility {...props} >
+                <Advocacy {...props} appState={appState} setAppState={setAppState} />
+            </StyledTrackVisibility>
 
 
 
 
-                        </FooterMenu>
 
-                        <Header as='h6' icon='copyright' content={(new Date()).getFullYear() + " Inner Wisdom"} />
 
-                        <Divider hidden />
-                    </FooterContainer>
+            <div>
+                <Divider hidden />
+                <Divider hidden />
+                <div style={{ background: "rgb(230, 230, 230)" }}>
 
-                </Container>
+                    <Container text>
+
+                        <FooterContainer >
+                            <Divider hidden />
+                            <FooterMenu compact secondary>
+                                < Menu.Item
+                                    name='wrote'
+                                    onClick={() => window.scroll({ top: iWroteYouASongRef.current.offsetTop, behavior: 'smooth' })}
+                                    content='I Wrote You A Song'
+                                />
+                                < Menu.Item
+                                    name='hieronymus'
+                                    onClick={() => window.scroll({ top: hieronymusRef.current.offsetTop, behavior: 'smooth' })}
+                                    content='Hieronymus Trio'
+                                />
+                                < Menu.Item
+                                    name='trashCanDream'
+                                    onClick={() => window.scroll({ top: trashCanRef.current.offsetTop, behavior: 'smooth' })}
+                                    content='Trash Can Dream'
+                                />
+
+
+
+
+
+                            </FooterMenu>
+                            <FooterMenu compact secondary>
+                                < Menu.Item
+                                    name='equrlity'
+                                    onClick={() => window.scroll({ top: equrlityRef.current.offsetTop, behavior: 'smooth' })}
+                                    content='Equrlity'
+                                />
+                                < Menu.Item
+                                    name='advocacy'
+                                    onClick={() => window.scroll({ top: advocacyRef.current.offsetTop, behavior: 'smooth' })}
+                                    content='Advocacy'
+                                />
+
+
+
+
+                            </FooterMenu>
+
+                            <Header as='h6' icon='copyright' content={(new Date()).getFullYear() + " Inner Wisdom"} />
+
+                            <Divider hidden />
+                        </FooterContainer>
+
+                    </Container>
+                </div>
+
             </div>
 
-        </div>
+
+
+
+        </Container>
+        {/* </Sidebar.Pusher> */}
     </>
+
+
+
+
+
+
+
 }
