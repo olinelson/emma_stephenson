@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { FeatureAlbumCard, FeatureAlbumCardText, Section } from './CustomComponents'
-import { Button, Modal, Container, Divider, Header } from "semantic-ui-react"
+import { Button, Modal, Container, Divider, Header, Image } from "semantic-ui-react"
 export default function News(props) {
 
     useEffect(() => {
@@ -15,7 +15,7 @@ export default function News(props) {
         <FeatureAlbumCard>
             <Header as="h1" style={{ fontSize: "4rem" }} textAlign="center">Emma Stephenson</Header>
             <Divider hidden />
-            <img alt="I wrote you a song album cover" src="https://via.placeholder.com/350" />
+            <Image alt="I wrote you a song album cover" src="https://via.placeholder.com/350" />
             <FeatureAlbumCardText>
                 {/* <h1 style={{ margin: 0, marginTop: "-.5rem" }}>I Wrote You A Song</h1> */}
                 <p>Songs by Emma Grace Stephenson featuring six astonishing Australian vocalists, recorded at Engine Room Audio NYC. Produced by Darren Fewins.</p>

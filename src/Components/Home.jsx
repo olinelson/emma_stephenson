@@ -140,7 +140,7 @@ export default function Home(props) {
 
 
 
-        <Container >
+        <div >
 
 
             <StyledTrackVisibility {...props} partialVisibility>
@@ -187,51 +187,7 @@ export default function Home(props) {
 
                     <Container text>
 
-                        <FooterContainer >
-                            <Divider hidden />
-                            <FooterMenu compact secondary>
-                                < Menu.Item
-                                    name='wrote'
-                                    onClick={() => window.scroll({ top: iWroteYouASongRef.current.offsetTop, behavior: 'smooth' })}
-                                    content='I Wrote You A Song'
-                                />
-                                < Menu.Item
-                                    name='hieronymus'
-                                    onClick={() => window.scroll({ top: hieronymusRef.current.offsetTop, behavior: 'smooth' })}
-                                    content='Hieronymus Trio'
-                                />
-                                < Menu.Item
-                                    name='trashCanDream'
-                                    onClick={() => window.scroll({ top: trashCanRef.current.offsetTop, behavior: 'smooth' })}
-                                    content='Trash Can Dream'
-                                />
 
-
-
-
-
-                            </FooterMenu>
-                            <FooterMenu compact secondary>
-                                < Menu.Item
-                                    name='equrlity'
-                                    onClick={() => window.scroll({ top: equrlityRef.current.offsetTop, behavior: 'smooth' })}
-                                    content='Equrlity'
-                                />
-                                < Menu.Item
-                                    name='advocacy'
-                                    onClick={() => window.scroll({ top: advocacyRef.current.offsetTop, behavior: 'smooth' })}
-                                    content='Advocacy'
-                                />
-
-
-
-
-                            </FooterMenu>
-
-                            <Header as='h6' icon='copyright' content={(new Date()).getFullYear() + " Inner Wisdom"} />
-
-                            <Divider hidden />
-                        </FooterContainer>
 
                     </Container>
                 </div>
@@ -241,7 +197,52 @@ export default function Home(props) {
 
 
 
-        </Container>
+        </div>
+        <FooterContainer >
+            <Divider hidden />
+            <FooterMenu compact secondary>
+                < Menu.Item
+                    name='wrote'
+                    onClick={() => window.scroll({ top: iWroteYouASongRef.current.offsetTop, behavior: 'smooth' })}
+                    content='I Wrote You A Song'
+                />
+                < Menu.Item
+                    name='hieronymus'
+                    onClick={() => window.scroll({ top: hieronymusRef.current.offsetTop, behavior: 'smooth' })}
+                    content='Hieronymus Trio'
+                />
+                < Menu.Item
+                    name='trashCanDream'
+                    onClick={() => window.scroll({ top: trashCanRef.current.offsetTop, behavior: 'smooth' })}
+                    content='Trash Can Dream'
+                />
+
+
+
+
+
+            </FooterMenu>
+            <FooterMenu compact secondary>
+                < Menu.Item
+                    name='equrlity'
+                    onClick={() => window.scroll({ top: equrlityRef.current.offsetTop, behavior: 'smooth' })}
+                    content='Equrlity'
+                />
+                < Menu.Item
+                    name='advocacy'
+                    onClick={() => window.scroll({ top: advocacyRef.current.offsetTop, behavior: 'smooth' })}
+                    content='Advocacy'
+                />
+
+
+
+
+            </FooterMenu>
+
+            <Header as='h6' icon='copyright' content={(new Date()).getFullYear() + " Inner Wisdom"} />
+
+            <Divider hidden />
+        </FooterContainer>
         {/* </Sidebar.Pusher> */}
     </>
 
