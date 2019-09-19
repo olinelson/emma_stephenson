@@ -91,7 +91,7 @@ export const Section = styled(Container)`
     margin-bottom: 0;
 `
 export const SectionHeader = styled(Header)`
-   font-size: 3rem !importsant;
+   font-size: 3rem !important;
    text-align: center;
 `
 
