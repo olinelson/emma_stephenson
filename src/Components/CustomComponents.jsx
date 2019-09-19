@@ -106,13 +106,12 @@ export const RefDivider = styled.div`
 export const FooterContainer = styled.div`
         display: grid;
         justify-items: center;
-        align-items: center;
-        grid-gap: .5rem;
+        background: #CCCCCC;
     `
 export const FooterMenu = styled(Menu)`
-        margin: 0 !important;
-        margin-bottom: 0 !important;
-        font-size: .9rem !important;
+        // margin: 0 !important;
+        // margin-bottom: 0 !important;
+        // font-size: .9rem !important;
     `
 
 export const NonMobileMenuBar = styled(Menu)`

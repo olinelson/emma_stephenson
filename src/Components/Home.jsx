@@ -200,7 +200,7 @@ export default function Home(props) {
         </div>
         <FooterContainer >
             <Divider hidden />
-            <FooterMenu compact secondary>
+            <FooterMenu stackable text compact secondary>
                 < Menu.Item
                     name='wrote'
                     onClick={() => window.scroll({ top: iWroteYouASongRef.current.offsetTop, behavior: 'smooth' })}
@@ -222,7 +222,7 @@ export default function Home(props) {
 
 
             </FooterMenu>
-            <FooterMenu compact secondary>
+            <FooterMenu stackable text compact secondary>
                 < Menu.Item
                     name='equrlity'
                     onClick={() => window.scroll({ top: equrlityRef.current.offsetTop, behavior: 'smooth' })}
