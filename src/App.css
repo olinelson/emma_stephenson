@@ -72,8 +72,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .App{
-   overflow:scroll;
+   /* overflow:scroll; */
   -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   width: 100vw;
 }
