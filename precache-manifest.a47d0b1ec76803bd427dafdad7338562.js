@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9af75c658fc8d2a80cf7fc4e15264ecc",
+    "revision": "42bd187f26b15964a81a7a25e51bd2e4",
     "url": "/emma_stephenson/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/emma_stephenson/static/css/2.f717790d.chunk.css"
   },
   {
-    "revision": "690b04810d55e6cd23f2",
+    "revision": "284e29c477b036fb78e9",
     "url": "/emma_stephenson/static/css/main.625ac51c.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/emma_stephenson/static/js/2.fac7212c.chunk.js"
   },
   {
-    "revision": "690b04810d55e6cd23f2",
-    "url": "/emma_stephenson/static/js/main.3c6b7544.chunk.js"
+    "revision": "284e29c477b036fb78e9",
+    "url": "/emma_stephenson/static/js/main.ce74259a.chunk.js"
   },
   {
     "revision": "b6a3281f1a9d0aa91d05",
