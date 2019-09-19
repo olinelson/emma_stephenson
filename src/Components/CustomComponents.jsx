@@ -129,7 +129,7 @@ export const MobileHamburgerIcon = styled(Icon)`
         position: fixed;
         top: 1rem;
         right: 1rem;
-
+        z-index: 500;
         @media (min-width: 870px) {
          visibility: hidden ;
         }
